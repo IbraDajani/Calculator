@@ -4,12 +4,17 @@ import "./App.css";
 const App = () => {
   const [result, setResult] = useState("");
 
-  const computar = () => {
-    setResult(eval(result).toString());
+  const handleButton = (item) => {
+    let validate = /[+!@#$%^&*(),.?":{}|<>-]{2,}$/.test(
+      result.concat(item.target.name)
+    );
+    if (!validate) {
+      setResult(result.concat(item.target.name));
+    }
   };
 
-  const handleButton = (item) => {
-    setResult(result.concat(item.target.name));
+  const computar = () => {
+    setResult(eval(result).toString());
   };
 
   const limpar = () => {
